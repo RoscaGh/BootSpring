@@ -25,4 +25,7 @@ public class CarService {
     public void deleteCarById(Long id){
         carRepository.deleteById(id);
     }
+    public void deleteAll(){
+        carRepository.deleteAll();
+    }
 }

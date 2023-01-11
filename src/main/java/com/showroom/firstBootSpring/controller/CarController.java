@@ -26,7 +26,7 @@ public class CarController{
         Car addedCar=carService.addCar(car);
         return ResponseEntity.status(HttpStatus.CREATED).body(addedCar);
     }
-    @PutMapping("update/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<Car> updateCarbyId(@PathVariable Long id, @RequestBody Car car){
         Car addedCar=carService.updateCarById(id,car);
         return ResponseEntity.status(HttpStatus.CREATED).body(addedCar);
@@ -34,6 +34,11 @@ public class CarController{
     @DeleteMapping("delete/{id}")
     public ResponseEntity<String> deleteById(@PathVariable Long id){
         carService.deleteCarById(id);
-        return ResponseEntity.status(HttpStatus.OK).body("Deleted");
+        return ResponseEntity.status(HttpStatus.OK).body("Deleted car with id-"+id);
+    }
+    @DeleteMapping("/delete")
+    public ResponseEntity<String> deleteById(){
+        carService.deleteAll();
+        return ResponseEntity.status(HttpStatus.OK).body("All cars are deleted");
     }
 }
