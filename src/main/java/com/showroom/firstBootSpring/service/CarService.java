@@ -5,6 +5,8 @@ import com.showroom.firstBootSpring.repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CarService {
     @Autowired
@@ -12,8 +14,8 @@ public class CarService {
     public Car addCar(Car car){
         return carRepository.save(car);
     }
-    public Iterable<Car> getAllCars(){
-        return carRepository.findAll();
+    public List<Car> getAllCars(){
+        return (List<Car>) carRepository.findAll();
     }
     public Car getCarbyId(Long id){
         return carRepository.findById(id).orElse(new Car());
@@ -28,4 +30,5 @@ public class CarService {
     public void deleteAll(){
         carRepository.deleteAll();
     }
+
 }
