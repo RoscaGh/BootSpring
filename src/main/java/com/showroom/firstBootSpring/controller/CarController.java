@@ -23,12 +23,10 @@ public class CarController{
     public static String UPLOAD_DIRECTORY="src/main/resources/static/uploads/";
     @Autowired
     private CarService carService;
+
     @GetMapping()
-//    public ResponseEntity<List> getCars(){
-//        List<Car> cars=carService.getAllCars();
-//        return ResponseEntity.status(HttpStatus.OK).body(cars);
-//    }
     public List <Car> getCars(){
+
         return carService.getAllCars();
     }
     @GetMapping("/{id}")
@@ -56,7 +54,6 @@ public class CarController{
         carService.deleteAll();
         return ResponseEntity.status(HttpStatus.OK).body("All cars are deleted");
     }
-
     @PostMapping("/upload")
     public String uploadImage(Model model, @RequestParam("file") MultipartFile file) throws IOException, IOException {
         StringBuilder fileNames = new StringBuilder();
@@ -66,4 +63,5 @@ public class CarController{
         model.addAttribute("msg", "Uploaded images: " + fileNames.toString());
         return "\"success\"";
     }
+
 }
